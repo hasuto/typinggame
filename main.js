@@ -1,25 +1,54 @@
-var p = document.getElementById('text');
 
+
+var p = document.getElementById('text');
 //タイピングする文字列をここで用意しておく
+
+
 var textLists = [
     'You are already dead',
     'Some human garbege',
     'It will be allright',
-    'I must not run away.i must not run away',
+    'I must not run away.I must not run away',
     'When you give up, that’s when the game is over',
     'Are you talking about kuririn',
-    'In the name of the Moon, i will punish you',
+    'In the name of the Moon, I will punish you',
     'Let it be',
     'I will going to kill then all',
     'What is yours is mine,and what is mine is my own',
     'Give up that i give up',
 
+
 ];
+
+
 var checkTexts = [];
+
 
 
 createText();
 
+const timer = document.getElementById('timer');
+let TIME = 60;
+const seikai = document.getElementById('seikai');
+const explanation = document.getElementById('explanation');
+
+
+const countdown = setInterval(function() {
+    
+ 
+        timer.textContent = '制限時間：' + --TIME + '秒';
+        if(TIME <= 0) finish();
+    
+
+        }, 1000);
+            function finish() {
+            clearInterval(countdown);
+    
+            seikai.textContent = '正解数は' + score + '個でした！';
+            explanation.textContent = 'リスタートしたい時はブラウザを更新してね！';
+            state = false;
+
+}
 
 
 function createText() {
@@ -39,38 +68,30 @@ function createText() {
         return span;
     });
 }
-const timer = document.getElementById('timer');
-let TIME = 20;
 
 
-// document.addEventListener('keydown', keyDown);
 
 
-const countdown = setInterval(function() {
- 
- 
-    timer.textContent = '制限時間：' + --TIME + '秒';
-    if(TIME <= 0) finish();
-    
 
-}, 1000);
 
-// function keyDown(e) {
+
+
 
     const scoreLabel=document.getElementById("score");
     const missLabel=document.getElementById("miss");
 
     let score = 0;
     let miss = 0;
-    let loc = 0;
+    
+    let state = true;
+
+  
 
     //キーボードからの入力は「e.key」に格納されている
-    window.addEventListener('keydown',e =>{
-   
-
+    window.addEventListener('keydown', e => {
     if(e.key === checkTexts[0].textContent) {
+        if(!state)return;
         console.log("score");
-        loc++;
         checkTexts[0].className = 'add-blue';
         
         score++;
@@ -81,11 +102,25 @@ const countdown = setInterval(function() {
         
         checkTexts.shift();
     }else{
-        console.log("miss");
+        if(!state)return;
+        var bool = event.shiftKey;
+        if(bool == true){
+        
+        }else if(bool == false){
         miss++;
         missLabel.textContent=miss;
+        }
+        
     }
         //配列要素が空っぽになったら次の問題を出す
         if(!checkTexts.length) createText();
+        
+        
+        
+    
     
 });
+
+
+
+

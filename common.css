@@ -1,7 +1,7 @@
 #text {
-    font-size: 6em;
+    font-size: 4em;
     font-weight: bold;
-    color:rgb(136, 134, 134);
+    color:#666;
     text-align: center;
 }
 
@@ -10,10 +10,30 @@ span {
 }
 
 .add-blue {
-    font-size: 0.7em;
-    color: rgb(233, 56, 224);
+    font-size: 0.5em;
+    color: #00f;
 }
 
- h1 {
-    padding-left: 30%;
+
+#risutart {
+    bottom: 700px;
+    position: absolute;
+    font-weight: 200;
+}
+
+.back-top a{
+    color: #fff;
+    background-color: #eb6100;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 15px;
+    text-decoration: none;
+
+}
+.back-top  a:hover{
+    color: #fff;
+    background-color: #f56500;
+}
+h1{
+    text-align: center;
 }
